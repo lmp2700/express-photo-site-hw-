@@ -4,9 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Edit <%= user.username %> </title>
 </head>
 <body>
-    
+
+        <h2>Edit <%= user.username %>'s Account</h2>
+        <form action="/users/<%=user._id%>?_method=PUT" method="POST">
+            <input type="text" name="title" value="<%= user.username %>"/><br/>
+            <input type="text" name="title" value="<%= user.password %>"/><br/>
+            <input type="text" name="title" value="<%= user.email %>"/><br/>
+                <input type="submit">Update Profile</a><br/>
+        </form>
+
+        
+        <a href="/users">Home Page</a>
+        <a href="/users/new">Create an account</a> 
 </body>
 </html>

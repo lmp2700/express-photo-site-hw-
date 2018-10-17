@@ -4,18 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>New User</title>
+    <title>New User :: Create a New Account</title>
 </head>
 <body>
-    <h1>Create a new account</h2>
+    <nav>
+        <a href="/">Home Page</a>
+        <a href="/users">List of Users</a>
+    </nav>
+
+    <h1>Create a new account</h1>
 
     <main>
-        <form action="/test/users" method="POST">
+        <form action="/users" method="POST">
+            Email: <input type="text" name="email"><br>
             Username: <input type ="text" name="username"><br>
             Password: <input type="text" name="password"><br>
-                <input type="submit">
+                <input type="submit">Create Account</button>
         </form>
     </main>
+
     
+
 </body>
 </html>

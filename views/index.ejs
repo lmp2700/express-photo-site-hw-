@@ -7,11 +7,15 @@
     <title>Photo Site</title>
 </head>
 <body>
-     <h1>Users Home Page</h1>
+     <h1>Landing Page</h1>
 
-    <% for(let i = 0; i < user.photos.length; i++) { %>
-        <a href="/users/<%=user[i]_id%>"><%= user[i].photos %></a>
-   <% } %>
+     for(let i = 0; i < photos.length; i++) {
+         <a href=""><%= photos.name %></a>
+     }
+
+    //  The home (index) page should show all of the pictures that have been submitted.
+
+    //  2-Model - Think about it: You don't need to worry about users here - it's all about the photos.
 
      <a href="/users/users">See all users</a>
      <a href="/users/new">Create an account</a>
