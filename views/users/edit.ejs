@@ -15,7 +15,9 @@
             <input type="text" name="title" value="<%= user.email %>"/><br/>
                 <input type="submit">Update Profile</a><br/>
         </form>
-
+        <form action="/users/<%=user.id?_method=DELETE%>" method="POST">
+        <input type="delete" value="delete user">
+        </form>
         
         <a href="/users">Home Page</a>
         <a href="/users/new">Create an account</a> 
