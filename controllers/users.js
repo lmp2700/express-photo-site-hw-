@@ -13,9 +13,18 @@ router.get('/', (req, res) => {
     })
 });
 
+
 router.get('/new', (req, res) => {
     res.render('users/new.ejs');
   })
+
+router.get('/users', (req, res) => {
+  User.find({}, (err, allUsers) => {
+    res.render('users/users.ejs', {
+      user: allUsers
+    });
+  });
+});
 
 // There should be a show page for the user's photos. On this page, you should be able to see the user's username, 
 // all pictures that this particular user has posted, and their photo information.
@@ -24,10 +33,11 @@ router.get('/new', (req, res) => {
 // one user’s particular photo. Would that look like users/1/8 or like photos/1/8?
 
 router.get('/:id', (req, res)=>{
-  User.findById(req.params.id, (err, foundUser)=>{
+  User.findById(req.params.id, (err, foundUser) => {
+    // push the photos into the array for the user
     res.render('users/show.ejs', {
       user: foundUser,
-      photo: Photos
+      photos: Photos
     });
   });
 });
@@ -37,7 +47,7 @@ router.get('/:id', (req, res)=>{
 // 2-Model - Think about it: If we delete a user, we also need to delete their photos. 
 // Will that automatically happen when we delete the user?
 router.get('/:id/edit', (req, res) => {
-  User.findById(req.params.id, (err, editUser) => {
+  User.findByIdAndUpdate(req.params.id, (err, editUser) => {
     res.render('users/edit.ejs', {
       user: editUser
     });
@@ -50,11 +60,23 @@ router.post('/', (req, res) => {
     if(err) {
       console.log(err)
     } else {
-      console.log(createdUser) // getting Validation error due to email?
+      console.log(createdUser)
       res.redirect('/users')
       }
   });
 });
+
+// CODE FOR PUSHING PHOTOS TO THE PAGE??
+// router.post("/:id", (req, res) => {
+//   User.findById(req.params.id, (err, foundData)=> {
+//       Photos.create(req.body, (err, newPhoto) => {
+//           foundData.photos.push(newPhoto);
+//           foundData.save((err,saved) => {
+//               res.redirect("/");
+//           });
+//       });
+//   });
+// });
 
 router.put('/:id', (req, res) => {
   User.findByIdAndUpdate(req.params.id, req.body, (err, updateUser) => {
@@ -70,13 +92,7 @@ router.delete('/:id', (req, res) => {
 
 
 
-// router.get('/users', (req, res) => {
-//   User.find({}, (err, allUsers) => {
-//     res.render('users/users.ejs', {
-//       user: allUsers
-//     });
-//   });
-// });
+
 
 
 

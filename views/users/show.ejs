@@ -8,21 +8,22 @@
 </head>
 <body>
 <header>
-    <%= user.username %><br>
+    <%= user[i].username %><br>
 </header>
-<nav>
-<a href="/">Home Page</a>
-<a href="/users">List of Users</a>
-</nav>
+    <nav>
+        <a href="/">Home Page</a>
+        <a href="/users">List of Users</a>
+        <a href="/users/<$= user._id %>/edit">Update User</a>
+    </nav>
 
-   <% for(let i = 0; i < user.photos.length; i++) { %>
-        <%= photo.name %>
-        <%= photo.caption %>
-        <%= photo.location %>
+   <% for(let i = 0; i < user.length; i++) { %>
+        <img src="<%= photos.url %>"><%= photos.name %></a>
+        <%= photos.caption %>
+        <%= photos.location %>
    <% } %>
-   
-  <form action="/users/<%=user.id?_method=DELETE" method="POST">
-<input type="submit" value="edit user"><input type="delete" value="delete user">
+
+  <form action="/users/<%=user.id?_method=DELETE%>" method="POST">
+    <input type="delete" value="delete user">
     </form>
 
 </body>

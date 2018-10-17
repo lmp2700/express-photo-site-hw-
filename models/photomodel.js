@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 const photoSchema = new mongoose.Schema({
     name: {type: String, required: true},
+    url: {type: String, required: true},
     caption: String,
     location: String,
 })

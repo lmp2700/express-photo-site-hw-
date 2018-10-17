@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const morgan = require('morgan')
+const Photos = require('./models/photomodel');
 
 require('./db/db');
 
@@ -19,7 +20,9 @@ app.use('/users', userController);
 
 app.get('/', (req, res) => {
     console.log('hi')
-    res.render('index.ejs');
+    res.render('index.ejs', {
+        photos: Photos
+    });
 })
 
 app.listen(3000);
